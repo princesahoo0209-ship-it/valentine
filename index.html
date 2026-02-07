@@ -33,7 +33,7 @@ button{margin:10px;padding:10px 18px;border-radius:20px;border:none;background:w
 <div class="container">
 <h1>Valentine Week for My Sweetheart 💖</h1>
 <h3>Made with love — Ash ❤️</h3>
-<button onclick="startMusic()">🎵 Tap to Play Our Song</button>
+
 <button onclick="openLetter()">Open a Letter 💌</button>
 <div id="days"></div>
 
@@ -106,10 +106,6 @@ document.addEventListener("click", function () {
         music.play();
     }
 }, { once: true });
-function startMusic() {
-    const music = document.getElementById("bgMusic");
-    music.play();
-  }  
 </script>
 
 
