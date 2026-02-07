@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For Yogita ❤️ From Ash</title>
+<style>
+body {margin:0;font-family:sans-serif;text-align:center;background:linear-gradient(135deg,#ff758c,#ff7eb3);color:white;overflow-x:hidden;}
+.container{padding:40px 20px;position:relative;z-index:2;}
+.day-box{margin:15px auto;padding:15px;max-width:520px;border-radius:15px;background:rgba(255,255,255,0.2);}
+.locked{opacity:0.35;}
+button{margin:10px;padding:10px 18px;border-radius:20px;border:none;background:white;color:#ff4d6d;font-weight:bold;}
+.section{margin-top:40px;}
+.heart{position:fixed;bottom:-20px;color:white;animation:floatUp 8s linear infinite;}
+@keyframes floatUp{0%{transform:translateY(0);opacity:1;}100%{transform:translateY(-110vh);opacity:0;}}
+#lockScreen{position:fixed;inset:0;background:#ff758c;display:flex;flex-direction:column;justify-content:center;align-items:center;z-index:9999;}
+</style>
+</head>
+<body>
+
+<!-- Password Screen -->
+<div id="lockScreen">
+<h2>Private Surprise for Yogita 💖</h2>
+<input type="password" id="pwd" placeholder="Enter password">
+<button onclick="checkPassword()">Unlock ❤️</button>
+<p id="error"></p>
+</div>
+
+<!-- Music -->
+<audio autoplay loop controls>
+<source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<div class="container">
+<h1>Valentine Week for Yogita 💖</h1>
+<h3>Made with love — Ash ❤️</h3>
+
+<button onclick="openLetter()">Open a Letter 💌</button>
+<div id="days"></div>
+
+<div class="section">
+<h2>Click for a Cute Message 🥰</h2>
+<button onclick="newMemory()">Show Message</button>
+<p id="memory"></p>
+</div>
+
+<div class="section">
+<h2 id="counter">Reasons I Love Yogita: 0</h2>
+<button onclick="countLove()">Add One ❤️</button>
+</div>
+
+<div class="section">
+<h2>One Last Thing…</h2>
+<button onclick="finalMsg()">Click Me ❤️</button>
+</div>
+
+<p style="font-size:12px;opacity:0.3;cursor:pointer;" onclick="openProposal()">❤️</p>
+</div>
+
+<script>
+function checkPassword(){
+if(document.getElementById("pwd").value.toLowerCase()=="princess"){
+document.getElementById("lockScreen").style.display="none";
+}else{document.getElementById("error").innerText="Wrong password ❤️";}
+}
+
+const today=new Date(); const year=today.getFullYear();
+const valentineDays=[
+{date:new Date(year,1,7),title:"Rose Day 🌹",msg:"Like a rose spreads fragrance, your love fills my life with happiness."},
+{date:new Date(year,1,8),title:"Propose Day 💍",msg:"In every lifetime, I would still choose you."},
+{date:new Date(year,1,9),title:"Chocolate Day 🍫",msg:"You are sweeter than chocolate."},
+{date:new Date(year,1,10),title:"Teddy Day 🧸",msg:"Sending you the warmest hug wrapped in love."},
+{date:new Date(year,1,11),title:"Promise Day 🤝",msg:"I promise to stand by you no matter what."},
+{date:new Date(year,1,12),title:"Hug Day 🤗",msg:"A hug from you feels like home."},
+{date:new Date(year,1,13),title:"Kiss Day 💋",msg:"If love could be sealed with a kiss, I'd kiss you forever."},
+{date:new Date(year,1,14),title:"Valentine’s Day ❤️",msg:"You are my forever, my always, my everything."}
+];
+
+const container=document.getElementById("days");
+valentineDays.forEach(day=>{
+let div=document.createElement("div");
+div.classList.add("day-box");
+if(today>=day.date){
+div.innerHTML=`<h2>${day.title}</h2><p>${day.msg}</p>`;
+}else{
+div.classList.add("locked");
+div.innerHTML=`<h2>🔒 ${day.title}</h2><p>Unlocks on ${day.date.toDateString()}</p>`;
+}
+container.appendChild(div);
+});
+
+function openLetter(){alert("Yogita, you make my world brighter every day. Love, Ash ❤️");}
+const memories=["Your smile makes my day 😊","Life is better with you 💖","You are my safe place 🤍"];
+function newMemory(){document.getElementById("memory").innerText=memories[Math.floor(Math.random()*memories.length)];}
+let count=0;function countLove(){count++;document.getElementById("counter").innerText="Reasons I Love Yogita: "+count;}
+function finalMsg(){alert("I love you more than words can explain 💖 — Ash");}
+function openProposal(){window.location.href="proposal.html";}
+setInterval(()=>{let heart=document.createElement("div");heart.className="heart";heart.style.left=Math.random()*100+"vw";heart.innerHTML="❤";document.body.appendChild(heart);setTimeout(()=>heart.remove(),8000);},500);
+</script>
+
+</body>
+</html>
